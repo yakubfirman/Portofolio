@@ -9,7 +9,7 @@ import type { Project } from "@/lib/data";
 type Props = { initialData?: Project };
 
 const inputCls =
-  "w-full bg-[#0a0a0a] border border-white/8 rounded px-3 py-2.5 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 focus:bg-[#0d0d0d] transition-all";
+  "w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 focus:bg-gray-100 transition-all";
 const labelCls = "block text-[11px] font-medium text-gray-500 mb-1.5 tracking-wide uppercase";
 
 function ImageUploader({ value, onChange }: { value: string; onChange: (path: string) => void }) {
@@ -70,15 +70,15 @@ function ImageUploader({ value, onChange }: { value: string; onChange: (path: st
         onDragOver={(e) => e.preventDefault()}
         className={`group relative flex min-h-[120px] cursor-pointer flex-col items-center justify-center rounded border-2 border-dashed transition-all ${
           value
-            ? "border-white/10 hover:border-red-800/40"
-            : "border-white/8 hover:border-red-800/40"
-        } bg-[#0a0a0a]`}
+            ? "border-gray-200 hover:border-red-800/40"
+            : "border-gray-200 hover:border-red-800/40"
+        } bg-white`}
       >
         {value ? (
           <div className="relative h-32 w-full overflow-hidden rounded">
             <Image src={value} alt="Preview" fill className="object-contain p-2" unoptimized />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity group-hover:opacity-100">
-              <p className="text-xs text-white">Klik untuk ganti gambar</p>
+            <div className="absolute inset-0 flex items-center justify-center bg-white/80 opacity-0 transition-opacity group-hover:opacity-100">
+              <p className="text-xs text-gray-900">Klik untuk ganti gambar</p>
             </div>
           </div>
         ) : (
@@ -119,7 +119,7 @@ function ImageUploader({ value, onChange }: { value: string; onChange: (path: st
                 </svg>
                 <div>
                   <p className="text-sm text-gray-500">
-                    Drag &amp; drop atau <span className="text-red-400">pilih file</span>
+                    Drag &amp; drop atau <span className="text-red-700">pilih file</span>
                   </p>
                   <p className="mt-0.5 text-[11px] text-gray-700">JPG, PNG, WebP · maks 5 MB</p>
                 </div>
@@ -138,7 +138,7 @@ function ImageUploader({ value, onChange }: { value: string; onChange: (path: st
 
       {/* Upload error */}
       {uploadError && (
-        <p className="flex items-center gap-1.5 text-xs text-red-400">
+        <p className="flex items-center gap-1.5 text-xs text-red-700">
           <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
             <path
               fillRule="evenodd"
@@ -152,12 +152,12 @@ function ImageUploader({ value, onChange }: { value: string; onChange: (path: st
 
       {/* Show current path + remove button if image selected */}
       {value && (
-        <div className="flex items-center justify-between rounded bg-white/3 px-3 py-1.5">
+        <div className="flex items-center justify-between rounded bg-gray-50 px-3 py-1.5">
           <p className="truncate font-mono text-[11px] text-gray-600">{value}</p>
           <button
             type="button"
             onClick={() => onChange("")}
-            className="ml-2 shrink-0 text-gray-700 hover:text-red-400"
+            className="ml-2 shrink-0 text-gray-700 hover:text-red-700"
             title="Hapus gambar"
           >
             <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,7 +246,7 @@ export default function ProjectForm({ initialData }: Props) {
     <form onSubmit={handleSubmit} className="w-full">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Left / main column */}
-        <div className="space-y-5 rounded border border-white/5 bg-[#0d0d0d] p-4 sm:p-6 lg:col-span-2">
+        <div className="space-y-5 rounded border border-gray-100 bg-gray-100 p-4 sm:p-6 lg:col-span-2">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <div>
               <label className={labelCls}>Nama Project *</label>
@@ -301,7 +301,7 @@ export default function ProjectForm({ initialData }: Props) {
             </div>
           </div>
 
-          <hr className="border-white/5" />
+          <hr className="border-gray-100" />
 
           <div>
             <label className={labelCls}>Role / Posisi</label>
@@ -335,7 +335,7 @@ export default function ProjectForm({ initialData }: Props) {
           </div>
 
           {error && (
-            <div className="flex items-center gap-2 rounded border border-red-900/30 bg-red-950/20 px-3 py-2">
+            <div className="flex items-center gap-2 rounded border border-red-200 bg-red-500/10 px-3 py-2">
               <svg
                 className="h-3.5 w-3.5 shrink-0 text-red-500"
                 fill="currentColor"
@@ -347,13 +347,13 @@ export default function ProjectForm({ initialData }: Props) {
                   clipRule="evenodd"
                 />
               </svg>
-              <p className="text-xs text-red-400">{error}</p>
+              <p className="text-xs text-red-700">{error}</p>
             </div>
           )}
         </div>
 
         {/* Right column — image upload */}
-        <div className="space-y-5 rounded border border-white/5 bg-[#0d0d0d] p-4 sm:p-6">
+        <div className="space-y-5 rounded border border-gray-100 bg-gray-100 p-4 sm:p-6">
           <div>
             <label className={labelCls}>Gambar Project</label>
             <ImageUploader value={image} onChange={setImage} />
@@ -366,7 +366,7 @@ export default function ProjectForm({ initialData }: Props) {
         <button
           type="submit"
           disabled={pending}
-          className="flex items-center gap-2 rounded bg-red-900 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-red-950/30 transition-all hover:bg-red-800 disabled:opacity-50"
+          className="flex items-center gap-2 rounded bg-red-600 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-red-500/30 transition-all hover:bg-red-800 disabled:opacity-50"
         >
           {pending ? (
             <svg className="h-3.5 w-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -399,7 +399,7 @@ export default function ProjectForm({ initialData }: Props) {
         <button
           type="button"
           onClick={() => router.back()}
-          className="flex items-center gap-1.5 rounded border border-white/10 px-4 py-2.5 text-sm text-gray-500 transition-colors hover:border-white/20 hover:text-white"
+          className="flex items-center gap-1.5 rounded border border-gray-200 px-4 py-2.5 text-sm text-gray-500 transition-colors hover:border-gray-300 hover:text-gray-900"
         >
           <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path

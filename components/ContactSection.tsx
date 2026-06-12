@@ -26,7 +26,7 @@ export default function ContactSection({ socials }: Props) {
                 <AvailabilityPill text="Open to Work" />
               </div>
 
-              <p className="text-sm leading-relaxed text-gray-500">
+              <p className="text-sm leading-relaxed text-slate-500">
                 Saya terbuka untuk proyek freelance, kolaborasi kreatif, maupun peluang kerja penuh
                 waktu. Hubungi lewat email atau media sosial — saya akan membalas secepatnya.
               </p>
@@ -34,7 +34,7 @@ export default function ContactSection({ socials }: Props) {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <a
                   href="mailto:yakubfirmanmustofa@gmail.com"
-                  className="group inline-flex items-center gap-2.5 rounded-xs bg-red-700 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-red-950/40 transition-all hover:bg-red-600 hover:shadow-lg hover:shadow-red-900/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/70"
+                  className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-700 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-500/20 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/30 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/70"
                 >
                   <FontAwesomeIcon icon={faEnvelope} className="h-3.5 w-3.5 shrink-0" />
                   Kirim Email
@@ -43,8 +43,8 @@ export default function ContactSection({ socials }: Props) {
                     className="h-3 w-3 shrink-0 transition-transform group-hover:translate-x-0.5"
                   />
                 </a>
-                <span className="flex items-center gap-1.5 text-xs text-gray-700">
-                  <FontAwesomeIcon icon={faMapPin} className="h-3 w-3 text-red-900/50" />
+                <span className="flex items-center gap-1.5 text-xs text-slate-500">
+                  <FontAwesomeIcon icon={faMapPin} className="h-3 w-3 text-red-400" />
                   Surakarta, Jawa Tengah — Indonesia
                 </span>
               </div>
@@ -53,7 +53,7 @@ export default function ContactSection({ socials }: Props) {
 
           {/* ── Right: social links ── */}
           <Reveal delay={200} className="md:col-span-2">
-            <p className="mb-4 text-[10px] font-semibold tracking-widest text-gray-600 uppercase">
+            <p className="mb-4 text-[10px] font-bold tracking-widest text-slate-500 uppercase">
               Temukan saya di
             </p>
             <div className="flex flex-col gap-1">
@@ -64,12 +64,12 @@ export default function ContactSection({ socials }: Props) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${label} (buka di tab baru)`}
-                  className="group flex items-center gap-3 rounded-xs px-3 py-2.5 text-sm text-gray-500 transition-all hover:bg-red-950/25 hover:text-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/70"
+                  className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-500 transition-all hover:bg-red-50/60 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/70"
                 >
                   <FontAwesomeIcon
                     icon={icon}
                     aria-hidden="true"
-                    className="h-3.5 w-3.5 shrink-0 text-red-800/50 transition-colors group-hover:text-red-400"
+                    className="h-3.5 w-3.5 shrink-0 text-red-400/70 transition-colors group-hover:text-red-500"
                   />
                   <span className="flex-1 text-xs">{label}</span>
                   <FontAwesomeIcon

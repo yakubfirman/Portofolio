@@ -21,7 +21,7 @@ type SkillCategory = {
 };
 
 const inputCls =
-  "w-full bg-[#0a0a0a] border border-white/8 rounded px-3 py-2 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all";
+  "w-full bg-white border border-gray-200 rounded px-3 py-2 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all";
 
 const ICON_OPTIONS = [
   "faCode", "faFileCode", "faWind", "faServer", "faDatabase",
@@ -29,7 +29,7 @@ const ICON_OPTIONS = [
 ];
 
 const BG_OPTIONS = [
-  "bg-red-700", "bg-red-800", "bg-red-900",
+  "bg-red-700", "bg-red-800", "bg-red-600",
   "bg-rose-700", "bg-orange-700", "bg-amber-700",
 ];
 
@@ -75,9 +75,9 @@ function SkillItemRow({
 
   if (editing) {
     return (
-      <div className="flex flex-wrap items-center gap-2 rounded bg-black/30 px-3 py-2">
+      <div className="flex flex-wrap items-center gap-2 rounded bg-white/30 px-3 py-2">
         <input
-          className="w-32 rounded border border-white/8 bg-[#0a0a0a] px-2 py-1 text-xs text-white focus:outline-none focus:border-red-800/60"
+          className="w-32 rounded border border-gray-200 bg-white px-2 py-1 text-xs text-gray-900 focus:outline-none focus:border-red-800/60"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Nama skill"
@@ -86,16 +86,16 @@ function SkillItemRow({
           type="number"
           min={0}
           max={100}
-          className="w-16 rounded border border-white/8 bg-[#0a0a0a] px-2 py-1 text-xs text-white focus:outline-none focus:border-red-800/60"
+          className="w-16 rounded border border-gray-200 bg-white px-2 py-1 text-xs text-gray-900 focus:outline-none focus:border-red-800/60"
           value={pct}
           onChange={(e) => setPct(Number(e.target.value))}
         />
         <span className="text-xs text-gray-600">%</span>
-        {error && <span className="text-xs text-red-400">{error}</span>}
-        <button onClick={handleSave} disabled={pending} className="rounded bg-red-900 px-2 py-1 text-xs text-white hover:bg-red-800 disabled:opacity-50">
+        {error && <span className="text-xs text-red-700">{error}</span>}
+        <button onClick={handleSave} disabled={pending} className="rounded bg-red-600 px-2 py-1 text-xs text-gray-900 hover:bg-red-800 disabled:opacity-50">
           {pending ? "..." : "OK"}
         </button>
-        <button onClick={() => setEditing(false)} className="rounded border border-white/8 px-2 py-1 text-xs text-gray-500 hover:text-white">
+        <button onClick={() => setEditing(false)} className="rounded border border-gray-200 px-2 py-1 text-xs text-gray-500 hover:text-gray-900">
           ✕
         </button>
       </div>
@@ -103,21 +103,21 @@ function SkillItemRow({
   }
 
   return (
-    <div className="flex items-center justify-between rounded bg-black/20 px-3 py-1.5">
+    <div className="flex items-center justify-between rounded bg-white/20 px-3 py-1.5">
       <div className="flex items-center gap-3">
-        <span className="min-w-25 text-sm text-white">{item.name}</span>
+        <span className="min-w-25 text-sm text-gray-900">{item.name}</span>
         <div className="flex items-center gap-1.5">
-          <div className="h-1.5 w-24 rounded-full bg-white/5">
+          <div className="h-1.5 w-24 rounded-full bg-black/5">
             <div className="h-full rounded-full bg-red-700/70" style={{ width: `${item.pct}%` }} />
           </div>
           <span className="text-xs text-gray-600">{item.pct}%</span>
         </div>
       </div>
       <div className="flex gap-1.5">
-        <button onClick={() => setEditing(true)} className="rounded border border-white/8 px-2 py-0.5 text-xs text-gray-600 hover:text-red-400">
+        <button onClick={() => setEditing(true)} className="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 hover:text-red-700">
           Edit
         </button>
-        <button onClick={handleDelete} disabled={pending} className="rounded border border-white/8 px-2 py-0.5 text-xs text-gray-600 hover:text-red-500 disabled:opacity-50">
+        <button onClick={handleDelete} disabled={pending} className="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 hover:text-red-500 disabled:opacity-50">
           Hapus
         </button>
       </div>
@@ -190,36 +190,36 @@ function CategoryCard({
   }
 
   return (
-    <div className="rounded border border-white/5 bg-[#0d0d0d]">
+    <div className="rounded border border-gray-100 bg-gray-100">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3">
         {editingMeta ? (
           <div className="flex flex-1 flex-wrap items-center gap-2">
             <input
-              className="w-28 rounded border border-white/8 bg-[#0a0a0a] px-2 py-1 text-sm text-white focus:outline-none focus:border-red-800/60"
+              className="w-28 rounded border border-gray-200 bg-white px-2 py-1 text-sm text-gray-900 focus:outline-none focus:border-red-800/60"
               value={label}
               onChange={(e) => setLabel(e.target.value)}
               placeholder="Label"
             />
             <select
-              className="rounded border border-white/8 bg-[#0a0a0a] px-2 py-1 text-xs text-white focus:outline-none"
+              className="rounded border border-gray-200 bg-white px-2 py-1 text-xs text-gray-900 focus:outline-none"
               value={iconKey}
               onChange={(e) => setIconKey(e.target.value)}
             >
               {ICON_OPTIONS.map((k) => <option key={k} value={k}>{k}</option>)}
             </select>
             <select
-              className="rounded border border-white/8 bg-[#0a0a0a] px-2 py-1 text-xs text-white focus:outline-none"
+              className="rounded border border-gray-200 bg-white px-2 py-1 text-xs text-gray-900 focus:outline-none"
               value={iconBg}
               onChange={(e) => setIconBg(e.target.value)}
             >
               {BG_OPTIONS.map((b) => <option key={b} value={b}>{b}</option>)}
             </select>
-            {error && <span className="text-xs text-red-400">{error}</span>}
-            <button onClick={handleSaveMeta} disabled={pending} className="rounded bg-red-900 px-2 py-1 text-xs text-white hover:bg-red-800 disabled:opacity-50">
+            {error && <span className="text-xs text-red-700">{error}</span>}
+            <button onClick={handleSaveMeta} disabled={pending} className="rounded bg-red-600 px-2 py-1 text-xs text-gray-900 hover:bg-red-800 disabled:opacity-50">
               {pending ? "..." : "Simpan"}
             </button>
-            <button onClick={() => setEditingMeta(false)} className="rounded border border-white/8 px-2 py-1 text-xs text-gray-500 hover:text-white">
+            <button onClick={() => setEditingMeta(false)} className="rounded border border-gray-200 px-2 py-1 text-xs text-gray-500 hover:text-gray-900">
               Batal
             </button>
           </div>
@@ -228,10 +228,10 @@ function CategoryCard({
             onClick={() => setExpanded((v) => !v)}
             className="flex flex-1 items-center gap-3 text-left"
           >
-            <span className={`flex h-6 w-6 items-center justify-center rounded text-[10px] font-bold text-white ${category.icon_bg}`}>
+            <span className={`flex h-6 w-6 items-center justify-center rounded text-[10px] font-bold text-gray-900 ${category.icon_bg}`}>
               {category.label.charAt(0)}
             </span>
-            <span className="font-medium text-white">{category.label}</span>
+            <span className="font-medium text-gray-900">{category.label}</span>
             <span className="text-xs text-gray-600">{category.skills.length} skill</span>
             <svg
               className={`ml-auto h-4 w-4 text-gray-600 transition-transform ${expanded ? "rotate-180" : ""}`}
@@ -248,14 +248,14 @@ function CategoryCard({
           <div className="ml-2 flex gap-1.5">
             <button
               onClick={() => setEditingMeta(true)}
-              className="rounded border border-white/8 px-2.5 py-1 text-xs text-gray-500 hover:text-red-400"
+              className="rounded border border-gray-200 px-2.5 py-1 text-xs text-gray-500 hover:text-red-700"
             >
               Edit
             </button>
             <button
               onClick={handleDeleteCategory}
               disabled={pending}
-              className="rounded border border-white/8 px-2.5 py-1 text-xs text-gray-600 hover:text-red-500 disabled:opacity-50"
+              className="rounded border border-gray-200 px-2.5 py-1 text-xs text-gray-600 hover:text-red-500 disabled:opacity-50"
             >
               Hapus
             </button>
@@ -265,7 +265,7 @@ function CategoryCard({
 
       {/* Skills list */}
       {expanded && (
-        <div className="border-t border-white/5 px-4 py-3">
+        <div className="border-t border-gray-100 px-4 py-3">
           <div className="space-y-1.5">
             {category.skills.map((item) => (
               <SkillItemRow
@@ -279,9 +279,9 @@ function CategoryCard({
 
           {/* Add item form */}
           {addingItem ? (
-            <div className="mt-3 flex flex-wrap items-center gap-2 rounded border border-white/8 p-3">
+            <div className="mt-3 flex flex-wrap items-center gap-2 rounded border border-gray-200 p-3">
               <input
-                className="w-36 rounded border border-white/8 bg-[#0a0a0a] px-2 py-1 text-xs text-white focus:outline-none focus:border-red-800/60"
+                className="w-36 rounded border border-gray-200 bg-white px-2 py-1 text-xs text-gray-900 focus:outline-none focus:border-red-800/60"
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
                 placeholder="Nama skill"
@@ -291,28 +291,28 @@ function CategoryCard({
                   type="number"
                   min={0}
                   max={100}
-                  className="w-16 rounded border border-white/8 bg-[#0a0a0a] px-2 py-1 text-xs text-white focus:outline-none focus:border-red-800/60"
+                  className="w-16 rounded border border-gray-200 bg-white px-2 py-1 text-xs text-gray-900 focus:outline-none focus:border-red-800/60"
                   value={newPct}
                   onChange={(e) => setNewPct(Number(e.target.value))}
                 />
                 <span className="text-xs text-gray-600">%</span>
               </div>
-              {itemError && <span className="text-xs text-red-400">{itemError}</span>}
+              {itemError && <span className="text-xs text-red-700">{itemError}</span>}
               <button
                 onClick={handleAddItem}
                 disabled={itemPending || !newName.trim()}
-                className="rounded bg-red-900 px-2 py-1 text-xs text-white hover:bg-red-800 disabled:opacity-50"
+                className="rounded bg-red-600 px-2 py-1 text-xs text-gray-900 hover:bg-red-800 disabled:opacity-50"
               >
                 {itemPending ? "..." : "Tambah"}
               </button>
-              <button onClick={() => setAddingItem(false)} className="rounded border border-white/8 px-2 py-1 text-xs text-gray-500 hover:text-white">
+              <button onClick={() => setAddingItem(false)} className="rounded border border-gray-200 px-2 py-1 text-xs text-gray-500 hover:text-gray-900">
                 Batal
               </button>
             </div>
           ) : (
             <button
               onClick={() => setAddingItem(true)}
-              className="mt-2 flex items-center gap-1.5 text-xs text-gray-600 hover:text-red-400"
+              className="mt-2 flex items-center gap-1.5 text-xs text-gray-600 hover:text-red-700"
             >
               <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5v15m7.5-7.5h-15" />
@@ -367,8 +367,8 @@ export default function SkillsManager({ initialCategories }: { initialCategories
     <div className="max-w-2xl space-y-3">
       {/* Add category */}
       {addingCat ? (
-        <div className="rounded border border-red-900/30 bg-[#0d0d0d] p-4">
-          <p className="mb-3 text-xs font-semibold text-gray-400">Tambah Kategori Baru</p>
+        <div className="rounded border border-red-200 bg-gray-100 p-4">
+          <p className="mb-3 text-xs font-semibold text-gray-600">Tambah Kategori Baru</p>
           <div className="flex flex-wrap gap-3">
             <div>
               <p className="mb-1 text-[10px] text-gray-600 uppercase">Label *</p>
@@ -387,16 +387,16 @@ export default function SkillsManager({ initialCategories }: { initialCategories
               </select>
             </div>
           </div>
-          {catError && <p className="mt-2 text-xs text-red-400">{catError}</p>}
+          {catError && <p className="mt-2 text-xs text-red-700">{catError}</p>}
           <div className="mt-3 flex gap-2">
             <button
               onClick={handleAddCategory}
               disabled={catPending || !newLabel.trim()}
-              className="rounded bg-red-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-800 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded bg-gradient-to-r from-red-600 to-red-700 px-3 text-white py-1.5 text-xs font-medium text-gray-900 hover:bg-red-800 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {catPending ? "Menambah..." : "Tambah Kategori"}
             </button>
-            <button onClick={() => setAddingCat(false)} className="rounded border border-white/8 px-3 py-1.5 text-xs text-gray-500 hover:text-white">
+            <button onClick={() => setAddingCat(false)} className="rounded border border-gray-200 px-3 py-1.5 text-xs text-gray-500 hover:text-gray-900">
               Batal
             </button>
           </div>
@@ -404,7 +404,7 @@ export default function SkillsManager({ initialCategories }: { initialCategories
       ) : (
         <button
           onClick={() => setAddingCat(true)}
-          className="flex items-center gap-2 rounded bg-red-900 px-3 py-2 text-sm font-medium text-white shadow-lg shadow-red-950/30 transition-all hover:bg-red-800"
+          className="flex items-center gap-2 rounded bg-gradient-to-r from-red-600 to-red-700 px-3 text-white py-2 text-sm font-medium text-white shadow-lg shadow-red-500/30 transition-all hover:bg-red-800"
         >
           <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5v15m7.5-7.5h-15" />

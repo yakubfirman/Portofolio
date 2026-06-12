@@ -6,7 +6,7 @@ import { updateProfile } from "@/app/admin/actions";
 import type { Profile } from "@/lib/data";
 
 const inputCls =
-  "w-full bg-[#0a0a0a] border border-white/8 rounded px-3 py-2.5 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 focus:bg-[#0d0d0d] transition-all";
+  "w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 focus:bg-gray-100 transition-all";
 const labelCls =
   "block text-[11px] font-medium text-gray-500 mb-1.5 tracking-wide uppercase";
 
@@ -108,7 +108,7 @@ export default function ProfileForm({ initialData }: { initialData: Profile }) {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-xl">
-      <div className="space-y-5 rounded border border-white/5 bg-[#0d0d0d] p-4 sm:p-6">
+      <div className="space-y-5 rounded border border-gray-100 bg-gray-100 p-4 sm:p-6">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <label className={labelCls}>Nama Depan *</label>
@@ -167,7 +167,7 @@ export default function ProfileForm({ initialData }: { initialData: Profile }) {
               accept=".pdf"
               onChange={handleCvUpload}
               disabled={cvUploading || pending}
-              className="rounded border border-white/8 bg-[#0a0a0a] px-3 py-2.5 text-sm text-white file:cursor-pointer file:border-0 file:bg-red-900 file:px-3 file:py-1.5 file:text-white hover:file:bg-red-800 disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 file:cursor-pointer file:border-0 file:bg-red-600 file:px-3 file:py-1.5 file:text-gray-900 hover:file:bg-red-800 disabled:cursor-not-allowed disabled:opacity-50"
             />
             {cvFile && (
               <p className="text-xs text-blue-400">📄 {cvFile.name} akan diupload</p>
@@ -182,11 +182,11 @@ export default function ProfileForm({ initialData }: { initialData: Profile }) {
         </div>
 
         {error && (
-          <div className="flex items-center gap-2 rounded border border-red-900/30 bg-red-950/20 px-3 py-2">
+          <div className="flex items-center gap-2 rounded border border-red-200 bg-red-500/10 px-3 py-2">
             <svg className="h-3.5 w-3.5 shrink-0 text-red-500" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
-            <p className="text-xs text-red-400">{error}</p>
+            <p className="text-xs text-red-700">{error}</p>
           </div>
         )}
         {success && (
@@ -203,7 +203,7 @@ export default function ProfileForm({ initialData }: { initialData: Profile }) {
         <button
           type="submit"
           disabled={pending || cvUploading}
-          className="flex items-center gap-2 rounded bg-red-900 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-red-950/30 transition-all hover:bg-red-800 disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex items-center gap-2 rounded bg-gradient-to-r from-red-600 to-red-700 px-4 text-white py-2 text-sm font-medium text-white shadow-lg shadow-red-500/30 transition-all hover:bg-red-800 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {cvUploading ? "Upload CV..." : pending ? "Menyimpan..." : "Simpan Perubahan"}
         </button>

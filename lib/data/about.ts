@@ -18,7 +18,7 @@ export type AboutData = {
   focus_tags: string[];
 };
 
-const API_URL = process.env.API_URL || "https://yakubfirman.pythonanywhere.com";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://yakubfirman.pythonanywhere.com";
 
 const FALLBACK_ABOUT: AboutData = { meta: [], education: [], highlights: [], focus_tags: [] };
 

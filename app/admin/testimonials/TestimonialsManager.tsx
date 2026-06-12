@@ -18,7 +18,7 @@ type Testimonial = {
 };
 
 const inputCls =
-  "w-full bg-[#0a0a0a] border border-white/8 rounded px-3 py-2.5 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 focus:bg-[#0d0d0d] transition-all";
+  "w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 focus:bg-gray-100 transition-all";
 const labelCls = "block text-[11px] font-medium text-gray-500 mb-1.5 tracking-wide uppercase";
 
 function ImageUploader({ value, onChange }: { value: string; onChange: (path: string) => void }) {
@@ -70,14 +70,14 @@ function ImageUploader({ value, onChange }: { value: string; onChange: (path: st
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
         className={`group relative flex min-h-[100px] cursor-pointer flex-col items-center justify-center rounded border-2 border-dashed transition-all ${
-          value ? "border-white/10 hover:border-red-800/40" : "border-white/8 hover:border-red-800/40"
-        } bg-[#0a0a0a]`}
+          value ? "border-gray-200 hover:border-red-800/40" : "border-gray-200 hover:border-red-800/40"
+        } bg-white`}
       >
         {value ? (
           <div className="relative h-24 w-full overflow-hidden rounded">
             <Image src={value} alt="Preview" fill className="object-contain p-2" unoptimized />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity group-hover:opacity-100">
-              <p className="text-xs text-white">Klik untuk ganti gambar</p>
+            <div className="absolute inset-0 flex items-center justify-center bg-white/80 opacity-0 transition-opacity group-hover:opacity-100">
+              <p className="text-xs text-gray-900">Klik untuk ganti gambar</p>
             </div>
           </div>
         ) : (
@@ -95,7 +95,7 @@ function ImageUploader({ value, onChange }: { value: string; onChange: (path: st
                 <svg className="h-7 w-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18M3.75 3h16.5A.75.75 0 0121 3.75v12a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75v-12A.75.75 0 013.75 3z" />
                 </svg>
-                <p className="text-sm text-gray-500">Drag &amp; drop atau <span className="text-red-400">pilih file</span></p>
+                <p className="text-sm text-gray-500">Drag &amp; drop atau <span className="text-red-700">pilih file</span></p>
                 <p className="text-[11px] text-gray-700">JPG, PNG, WebP · maks 4 MB</p>
               </>
             )}
@@ -103,11 +103,11 @@ function ImageUploader({ value, onChange }: { value: string; onChange: (path: st
         )}
         <input ref={inputRef} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }} />
       </div>
-      {uploadError && <p className="text-xs text-red-400">{uploadError}</p>}
+      {uploadError && <p className="text-xs text-red-700">{uploadError}</p>}
       {value && (
-        <div className="flex items-center justify-between rounded bg-white/3 px-3 py-1.5">
+        <div className="flex items-center justify-between rounded bg-gray-50 px-3 py-1.5">
           <p className="truncate font-mono text-[11px] text-gray-600">{value}</p>
-          <button type="button" onClick={() => onChange("")} className="ml-2 shrink-0 text-gray-700 hover:text-red-400" title="Hapus foto">✕</button>
+          <button type="button" onClick={() => onChange("")} className="ml-2 shrink-0 text-gray-700 hover:text-red-700" title="Hapus foto">✕</button>
         </div>
       )}
     </div>
@@ -171,7 +171,7 @@ function TestimonialRow({
 
   if (editing) {
     return (
-      <div className="rounded border border-white/8 bg-[#0d0d0d] p-4">
+      <div className="rounded border border-gray-200 bg-gray-100 p-4">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div>
             <label className={labelCls}>Nama</label>
@@ -207,29 +207,29 @@ function TestimonialRow({
               onChange={(e) => setApproved(e.target.checked)}
               className="accent-red-800"
             />
-            <span className="text-sm text-gray-400">Setujui tampil di halaman</span>
+            <span className="text-sm text-gray-600">Setujui tampil di halaman</span>
           </label>
         </div>
 
-        {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
+        {error && <p className="mt-2 text-xs text-red-700">{error}</p>}
         <div className="mt-3 flex gap-2">
           <button
             onClick={handleSave}
             disabled={pending}
-            className="rounded bg-red-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-800 disabled:opacity-50"
+            className="rounded bg-gradient-to-r from-red-600 to-red-700 px-3 text-white py-1.5 text-xs font-medium text-gray-900 hover:bg-red-800 disabled:opacity-50"
           >
             {pending ? "Menyimpan..." : "Simpan"}
           </button>
           <button
             onClick={() => setEditing(false)}
-            className="rounded border border-white/8 px-3 py-1.5 text-xs text-gray-500 hover:text-white"
+            className="rounded border border-gray-200 px-3 py-1.5 text-xs text-gray-500 hover:text-gray-900"
           >
             Batal
           </button>
           <button
             onClick={handleDelete}
             disabled={pending}
-            className="ml-auto rounded border border-red-900/50 px-3 py-1.5 text-xs text-red-400 hover:bg-red-900/10 disabled:opacity-50"
+            className="ml-auto rounded border border-red-900/50 px-3 py-1.5 text-xs text-red-700 hover:bg-red-500/5 disabled:opacity-50"
           >
             Hapus
           </button>
@@ -239,7 +239,7 @@ function TestimonialRow({
   }
 
   return (
-    <div className="rounded border border-white/8 bg-[#0a0a0a] p-4 hover:border-white/20 transition-all">
+    <div className="rounded border border-gray-200 bg-white p-4 hover:border-gray-300 transition-all">
       <div className="flex gap-3">
         {image && (
           <img src={image} alt={name} className="h-12 w-12 rounded-full object-cover" />
@@ -247,7 +247,7 @@ function TestimonialRow({
         <div className="flex-1">
           <div className="flex items-start justify-between gap-2">
             <div>
-              <h3 className="font-medium text-white">{name}</h3>
+              <h3 className="font-medium text-gray-900">{name}</h3>
               <p className="text-xs text-gray-500">
                 {role}
                 {company && ` · ${company}`}
@@ -261,13 +261,13 @@ function TestimonialRow({
               {approved ? "Ditampilkan" : "Pending"}
             </span>
           </div>
-          <p className="mt-2 line-clamp-2 text-xs text-gray-400">{message}</p>
+          <p className="mt-2 line-clamp-2 text-xs text-gray-600">{message}</p>
         </div>
       </div>
       <div className="mt-3 flex gap-2">
         <button
           onClick={() => setEditing(true)}
-          className="text-xs text-gray-500 hover:text-white transition-colors"
+          className="text-xs text-gray-500 hover:text-gray-900 transition-colors"
         >
           Edit
         </button>
@@ -300,7 +300,7 @@ export default function TestimonialsManager({
     <div className="space-y-4">
       {approved.length > 0 && (
         <div>
-          <h2 className="mb-3 text-sm font-semibold text-gray-400">Ditampilkan ({approved.length})</h2>
+          <h2 className="mb-3 text-sm font-semibold text-gray-600">Ditampilkan ({approved.length})</h2>
           <div className="space-y-2">
             {approved.map((t) => (
               <TestimonialRow
@@ -316,7 +316,7 @@ export default function TestimonialsManager({
 
       {pending.length > 0 && (
         <div>
-          <h2 className="mb-3 text-sm font-semibold text-gray-400">Pending Approval ({pending.length})</h2>
+          <h2 className="mb-3 text-sm font-semibold text-gray-600">Pending Approval ({pending.length})</h2>
           <div className="space-y-2">
             {pending.map((t) => (
               <TestimonialRow

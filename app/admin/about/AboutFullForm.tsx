@@ -75,7 +75,7 @@ const EMP_LABEL: Record<string, string> = Object.fromEntries(
 // â”€â”€â”€ Shared styles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const inp =
-  "w-full bg-[#0a0a0a] border border-white/8 rounded px-3 py-2 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all";
+  "w-full bg-white border border-gray-200 rounded px-3 py-2 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all";
 const lbl = "block text-[11px] font-medium text-gray-500 mb-1 tracking-wide uppercase";
 
 // â”€â”€â”€ Drag handle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -104,8 +104,8 @@ function DragHandle(props: Record<string, unknown>) {
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="rounded border border-white/5 bg-[#0d0d0d] p-4 sm:p-5">
-      <p className="mb-3 text-sm font-semibold text-gray-300">{title}</p>
+    <div className="rounded border border-gray-100 bg-gray-100 p-4 sm:p-5">
+      <p className="mb-3 text-sm font-semibold text-gray-700">{title}</p>
       {children}
     </div>
   );
@@ -118,7 +118,7 @@ function AddBtn({ onClick, label }: { onClick: () => void; label: string }) {
     <button
       type="button"
       onClick={onClick}
-      className="mt-3 flex items-center gap-1.5 text-xs text-gray-600 hover:text-red-400 transition-colors"
+      className="mt-3 flex items-center gap-1.5 text-xs text-gray-600 hover:text-red-700 transition-colors"
     >
       <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5v15m7.5-7.5h-15" />
@@ -171,7 +171,7 @@ function ExpCard({
     <div
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition, opacity: isDragging ? 0.4 : 1 }}
-      className="overflow-hidden rounded border border-white/5 bg-[#0a0a0a]"
+      className="overflow-hidden rounded border border-gray-100 bg-white"
     >
       <div className="flex items-center gap-2 px-3 py-2.5">
         <DragHandle {...attributes} {...listeners} />
@@ -186,13 +186,13 @@ function ExpCard({
             </p>
           )}
         </button>
-        <button type="button" onClick={() => setOpen((o) => !o)} className="shrink-0 rounded px-2 py-1 text-xs text-gray-600 hover:text-gray-300 transition-colors">
+        <button type="button" onClick={() => setOpen((o) => !o)} className="shrink-0 rounded px-2 py-1 text-xs text-gray-600 hover:text-gray-700 transition-colors">
           {open ? "â†‘" : "â†“"}
         </button>
         <button type="button" onClick={onRemove} className="shrink-0 px-1 text-gray-700 hover:text-red-500 transition-colors">âœ•</button>
       </div>
       {open && (
-        <div className="grid grid-cols-1 gap-3 border-t border-white/5 p-3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 border-t border-gray-100 p-3 sm:grid-cols-2">
           <div><label className={lbl}>Perusahaan</label><input className={inp} value={exp.company} onChange={(e) => f("company", e.target.value)} placeholder="PT Contoh Indonesia" /></div>
           <div><label className={lbl}>Jabatan</label><input className={inp} value={exp.role} onChange={(e) => f("role", e.target.value)} placeholder="Full Stack Developer" /></div>
           <div><label className={lbl}>Mulai</label><input className={inp} value={exp.period_start} onChange={(e) => f("period_start", e.target.value)} placeholder="Jan 2023" /></div>
@@ -230,7 +230,7 @@ function OrgCard({
     <div
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition, opacity: isDragging ? 0.4 : 1 }}
-      className="overflow-hidden rounded border border-white/5 bg-[#0a0a0a]"
+      className="overflow-hidden rounded border border-gray-100 bg-white"
     >
       <div className="flex items-center gap-2 px-3 py-2.5">
         <DragHandle {...attributes} {...listeners} />
@@ -238,11 +238,11 @@ function OrgCard({
           <p className="truncate text-sm text-gray-200">{org.name || <span className="italic text-gray-600">Organisasi baru</span>}</p>
           {org.role && <p className="truncate text-xs text-gray-600">{org.role}{org.period_start && <> &middot; {org.period_start}{org.period_end ? `â€“${org.period_end}` : "â€“skrg"}</>}</p>}
         </button>
-        <button type="button" onClick={() => setOpen((o) => !o)} className="shrink-0 rounded px-2 py-1 text-xs text-gray-600 hover:text-gray-300 transition-colors">{open ? "â†‘" : "â†“"}</button>
+        <button type="button" onClick={() => setOpen((o) => !o)} className="shrink-0 rounded px-2 py-1 text-xs text-gray-600 hover:text-gray-700 transition-colors">{open ? "â†‘" : "â†“"}</button>
         <button type="button" onClick={onRemove} className="shrink-0 px-1 text-gray-700 hover:text-red-500 transition-colors">âœ•</button>
       </div>
       {open && (
-        <div className="grid grid-cols-1 gap-3 border-t border-white/5 p-3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 border-t border-gray-100 p-3 sm:grid-cols-2">
           <div><label className={lbl}>Nama Organisasi</label><input className={inp} value={org.name} onChange={(e) => f("name", e.target.value)} placeholder="Himpunan Mahasiswa" /></div>
           <div><label className={lbl}>Jabatan</label><input className={inp} value={org.role} onChange={(e) => f("role", e.target.value)} placeholder="Ketua Divisi IT" /></div>
           <div><label className={lbl}>Mulai</label><input className={inp} value={org.period_start} onChange={(e) => f("period_start", e.target.value)} placeholder="2022" /></div>
@@ -274,7 +274,7 @@ function CertCard({
     <div
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition, opacity: isDragging ? 0.4 : 1 }}
-      className="overflow-hidden rounded border border-white/5 bg-[#0a0a0a]"
+      className="overflow-hidden rounded border border-gray-100 bg-white"
     >
       <div className="flex items-center gap-2 px-3 py-2.5">
         <DragHandle {...attributes} {...listeners} />
@@ -282,11 +282,11 @@ function CertCard({
           <p className="truncate text-sm text-gray-200">{cert.name || <span className="italic text-gray-600">Sertifikat baru</span>}</p>
           {cert.issuer && <p className="truncate text-xs text-gray-600">{cert.issuer}{cert.issued_date ? ` Â· ${cert.issued_date}` : ""}</p>}
         </button>
-        <button type="button" onClick={() => setOpen((o) => !o)} className="shrink-0 rounded px-2 py-1 text-xs text-gray-600 hover:text-gray-300 transition-colors">{open ? "â†‘" : "â†“"}</button>
+        <button type="button" onClick={() => setOpen((o) => !o)} className="shrink-0 rounded px-2 py-1 text-xs text-gray-600 hover:text-gray-700 transition-colors">{open ? "â†‘" : "â†“"}</button>
         <button type="button" onClick={onRemove} className="shrink-0 px-1 text-gray-700 hover:text-red-500 transition-colors">âœ•</button>
       </div>
       {open && (
-        <div className="grid grid-cols-1 gap-3 border-t border-white/5 p-3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 border-t border-gray-100 p-3 sm:grid-cols-2">
           <div className="sm:col-span-2"><label className={lbl}>Nama Sertifikat</label><input className={inp} value={cert.name} onChange={(e) => f("name", e.target.value)} placeholder="Google Analytics Certification" /></div>
           <div><label className={lbl}>Penerbit</label><input className={inp} value={cert.issuer} onChange={(e) => f("issuer", e.target.value)} placeholder="Google" /></div>
           <div><label className={lbl}>Tanggal</label><input className={inp} value={cert.issued_date} onChange={(e) => f("issued_date", e.target.value)} placeholder="Jan 2024" /></div>
@@ -412,7 +412,7 @@ export default function AboutFullForm({ initialData }: { initialData: FullData }
       </Section>
 
       {/* Feedback */}
-      {error && <p className="rounded border border-red-900/30 bg-red-950/20 px-3 py-2 text-xs text-red-400">{error}</p>}
+      {error && <p className="rounded border border-red-200 bg-red-500/10 px-3 py-2 text-xs text-red-700">{error}</p>}
       {success && <p className="rounded border border-green-900/30 bg-green-950/20 px-3 py-2 text-xs text-green-400">Data berhasil disimpan.</p>}
 
       <button

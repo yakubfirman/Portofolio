@@ -20,13 +20,13 @@ const LANG_COLORS: Record<string, string> = {
   Python: "bg-sky-500",
 };
 
-/** Warna sel per level kontribusi (0–4), disesuaikan dengan tema merah */
+/** Warna sel per level kontribusi (0–4) — light theme */
 const CONTRIBUTION_LEVELS = [
-  "bg-[#0f0303]", // 0 – tidak ada
-  "bg-red-950", // 1 – rendah
-  "bg-red-800/60", // 2 – sedang-rendah
-  "bg-red-600/70", // 3 – sedang-tinggi
-  "bg-red-500", // 4 – tinggi
+  "bg-slate-100",       // 0 – tidak ada
+  "bg-red-200",         // 1 – rendah
+  "bg-red-300",         // 2 – sedang-rendah
+  "bg-red-400",         // 3 – sedang-tinggi
+  "bg-red-500",         // 4 – tinggi
 ] as const;
 
 const CELL_PX = 10; // lebar/tinggi sel (px)
@@ -149,7 +149,7 @@ export default async function GitHubSection() {
         </Reveal>
 
         <Reveal delay={60}>
-          <p className="-mt-6 mb-12 max-w-xl text-sm leading-relaxed text-gray-500">
+          <p className="-mt-8 mb-12 max-w-xl text-sm leading-relaxed text-slate-500">
             Aktivitas dan kontribusi saya di GitHub — dari proyek pribadi hingga eksperimen
             teknologi yang sedang saya pelajari.
           </p>
@@ -161,16 +161,16 @@ export default async function GitHubSection() {
             <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {stats.map((stat, i) => (
                 <Reveal key={stat.label} delay={i * 80}>
-                  <div className="group flex items-center gap-4 rounded-xs border border-red-900/15 bg-[#0d0404]/60 p-5 transition-all duration-300 hover:border-red-800/35 hover:bg-[#0f0505]/80">
+                  <div className="group flex items-center gap-4 rounded-2xl border border-red-100/60 bg-white/70 p-5 backdrop-blur-sm transition-all duration-300 hover:border-red-200 hover:shadow-lg hover:shadow-red-50">
                     <div className="relative shrink-0">
-                      <div className="absolute inset-0 rounded-xs bg-red-700/15 blur-md transition-all duration-300 group-hover:bg-red-600/25 group-hover:blur-lg" />
-                      <div className="relative flex h-11 w-11 items-center justify-center rounded-xs border border-red-800/30 bg-red-950/50">
-                        <FontAwesomeIcon icon={stat.icon} className="h-4 w-4 text-red-400" />
+                      <div className="absolute inset-0 rounded-xl bg-red-100/40 blur-md transition-all duration-300 group-hover:bg-red-200/50 group-hover:blur-lg" />
+                      <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-red-50 to-rose-50 ring-1 ring-red-100">
+                        <FontAwesomeIcon icon={stat.icon} className="h-4 w-4 text-red-500" />
                       </div>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-white">{stat.value}</p>
-                      <p className="text-xs text-gray-500">{stat.label}</p>
+                      <p className="text-2xl font-black text-slate-900">{stat.value}</p>
+                      <p className="text-xs text-slate-500">{stat.label}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -182,24 +182,24 @@ export default async function GitHubSection() {
               {/* Top languages */}
               {data.topLanguages.length > 0 && (
                 <Reveal delay={200}>
-                  <div className="h-full rounded-xs border border-red-900/15 bg-[#0d0404]/60 p-5">
-                    <p className="mb-4 font-mono text-[10px] font-semibold tracking-widest text-gray-600 uppercase">
+                  <div className="h-full rounded-2xl border border-red-100/60 bg-white/70 p-5 backdrop-blur-sm">
+                    <p className="mb-4 font-mono text-[10px] font-bold tracking-widest text-slate-500 uppercase">
                       Top Languages
                     </p>
                     <div className="space-y-3">
                       {data.topLanguages.map(([lang, count]) => {
                         const pct = Math.round((count / data.totalLangCount) * 100);
-                        const color = LANG_COLORS[lang] ?? "bg-red-700";
+                        const color = LANG_COLORS[lang] ?? "bg-red-500";
                         return (
                           <div key={lang}>
                             <div className="mb-1 flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <span className={`h-2 w-2 rounded-full ${color}`} />
-                                <span className="text-xs text-gray-400">{lang}</span>
+                                <span className="text-xs text-slate-600">{lang}</span>
                               </div>
-                              <span className="font-mono text-[10px] text-gray-600">{pct}%</span>
+                              <span className="font-mono text-[10px] text-slate-500">{pct}%</span>
                             </div>
-                            <div className="h-1 w-full overflow-hidden rounded-full bg-red-950/40">
+                            <div className="h-1 w-full overflow-hidden rounded-full bg-slate-100">
                               <div
                                 className={`h-full rounded-full ${color} opacity-70`}
                                 style={{ width: `${pct}%` }}
@@ -216,8 +216,8 @@ export default async function GitHubSection() {
               {/* Contribution calendar */}
               {weeks.length > 0 && (
                 <Reveal delay={260}>
-                  <div className="rounded-xs border border-red-900/15 bg-[#0d0404]/60 p-5">
-                    <p className="mb-3 font-mono text-[10px] font-semibold tracking-widest text-gray-600 uppercase">
+                  <div className="rounded-2xl border border-red-100/60 bg-white/70 p-5 backdrop-blur-sm">
+                    <p className="mb-3 font-mono text-[10px] font-bold tracking-widest text-slate-500 uppercase">
                       Contribution Activity
                     </p>
 
@@ -230,7 +230,7 @@ export default async function GitHubSection() {
                         {monthLabels.map((ml) => (
                           <span
                             key={`${ml.label}-${ml.col}`}
-                            className="absolute font-mono text-[9px] text-gray-700"
+                            className="absolute font-mono text-[9px] text-slate-400"
                             style={{ left: ml.col * STRIDE }}
                           >
                             {ml.label}
@@ -248,7 +248,7 @@ export default async function GitHubSection() {
                                 <div
                                   key={di}
                                   title={`${day.date}: ${day.count} contributions`}
-                                  className={`h-2.5 w-2.5 rounded-xs ${CONTRIBUTION_LEVELS[day.level]} transition-opacity hover:opacity-60`}
+                                  className={`h-2.5 w-2.5 rounded-sm ${CONTRIBUTION_LEVELS[day.level]} transition-all duration-200 hover:ring-1 hover:ring-red-400/50`}
                                 />
                               ) : (
                                 <div key={di} className="h-2.5 w-2.5" />
@@ -259,7 +259,7 @@ export default async function GitHubSection() {
                       </div>
                     </div>
 
-                    <p className="mt-3 font-mono text-[10px] text-gray-600">
+                    <p className="mt-3 font-mono text-[10px] text-slate-500">
                       {data.totalContributions} contributions in the last year
                     </p>
                   </div>
@@ -269,9 +269,9 @@ export default async function GitHubSection() {
           </>
         ) : (
           <Reveal delay={100}>
-            <div className="rounded-xs border border-red-900/15 bg-[#0d0404]/60 p-8 text-center">
-              <FontAwesomeIcon icon={faGithub} className="mb-3 h-8 w-8 text-gray-700" />
-              <p className="text-sm text-gray-500">Statistik tidak dapat dimuat saat ini.</p>
+            <div className="rounded-2xl border border-red-100/60 bg-white/70 p-8 text-center backdrop-blur-sm">
+              <FontAwesomeIcon icon={faGithub} className="mb-3 h-8 w-8 text-slate-400" />
+              <p className="text-sm text-slate-500">Statistik tidak dapat dimuat saat ini.</p>
             </div>
           </Reveal>
         )}
@@ -283,13 +283,13 @@ export default async function GitHubSection() {
               href={`https://github.com/${GITHUB_USERNAME}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 rounded-xs border border-red-900/30 bg-red-950/20 px-5 py-2.5 text-sm font-semibold text-gray-300 transition-all duration-200 hover:border-red-700/50 hover:bg-red-950/40 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/70"
+              className="group inline-flex items-center gap-2.5 rounded-xl border border-red-200/80 bg-white/60 px-5 py-2.5 text-sm font-semibold text-slate-600 backdrop-blur-sm transition-all duration-300 hover:border-red-300 hover:bg-red-50/60 hover:text-slate-900 hover:shadow-lg hover:shadow-red-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/70"
             >
               <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
               Lihat Profil GitHub
               <FontAwesomeIcon
                 icon={faArrowUpRightFromSquare}
-                className="h-3 w-3 text-gray-600 transition-colors duration-200 group-hover:text-red-400"
+                className="h-3 w-3 text-slate-400 transition-colors duration-200 group-hover:text-red-500"
               />
             </a>
           </div>

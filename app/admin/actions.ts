@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 
-const API_URL = process.env.API_URL!;
-const API_KEY = process.env.API_SECRET_KEY!;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://yakubfirman.pythonanywhere.com";
+const API_KEY = process.env.API_SECRET_KEY || "";
 
 const authHeaders = {
   "Content-Type": "application/json",

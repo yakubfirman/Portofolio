@@ -8,32 +8,32 @@ import RoleBadge from "./RoleBadge";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-xs border border-red-900/20 bg-[#0d0404] transition-all duration-300 hover:-translate-y-1 hover:border-red-800/40 hover:shadow-xl hover:shadow-red-950/30">
-      {/* Glow accent */}
-      <div className="pointer-events-none absolute -top-8 -right-8 h-32 w-32 rounded-full bg-red-900/10 blur-[50px]" />
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-red-100/60 bg-white/70 shadow-sm backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-red-200 hover:shadow-2xl hover:shadow-red-100/40">
+      {/* Hover glow */}
+      <div className="pointer-events-none absolute -top-12 -right-12 h-40 w-40 rounded-full bg-red-400/0 blur-[60px] transition-all duration-500 group-hover:bg-red-400/10" />
 
       {/* ── Screenshot ── */}
       <Link
         href={`/projects/${project.slug}`}
         aria-label={`Lihat detail proyek ${project.name}`}
-        className="relative block aspect-video w-full overflow-hidden bg-[#0a0202]"
+        className="relative block aspect-video w-full overflow-hidden bg-slate-50"
       >
         {project.image ? (
           <Image
             src={project.image}
             alt={`Screenshot ${project.name}`}
             fill
-            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, 50vw"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center">
-            <span className="text-4xl font-black text-red-900/30 select-none">
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-red-50 to-rose-50">
+            <span className="text-5xl font-black text-red-200 select-none">
               {project.name.charAt(0)}
             </span>
           </div>
         )}
-        <div className="absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-[#0d0404] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white/60 to-transparent" />
       </Link>
 
       {/* ── Content ── */}
@@ -42,14 +42,14 @@ export default function ProjectCard({ project }: { project: Project }) {
           <RoleBadge role={project.details.role} />
         </div>
 
-        <h3 className="mb-2 line-clamp-2 leading-snug font-bold text-white">{project.name}</h3>
+        <h3 className="mb-2 line-clamp-2 leading-snug font-bold text-slate-900">{project.name}</h3>
 
-        <p className="mb-auto line-clamp-2 text-xs leading-relaxed text-gray-500">
+        <p className="mb-auto line-clamp-2 text-xs leading-relaxed text-slate-500">
           {project.description}
         </p>
 
         {/* ── Action buttons ── */}
-        <div className="mt-4 flex gap-1.5 border-t border-red-900/15 pt-4">
+        <div className="mt-4 flex gap-2 border-t border-red-100/60 pt-4">
           <Button
             href={`/projects/${project.slug}`}
             variant="outline"

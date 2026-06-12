@@ -14,7 +14,7 @@ export default function TestimonialsSection({ testimonials }: Props) {
 
   return (
     <section id="testimonials" className="px-5 py-20 sm:px-8 md:py-28">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-5xl">
         <Reveal>
           <SectionHeading tag="Reviews" title="Apa Kata Klien" />
         </Reveal>

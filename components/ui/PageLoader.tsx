@@ -21,51 +21,37 @@ export default function PageLoader() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 z-9999 flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a]"
+      className="fixed inset-0 z-9999 flex flex-col items-center justify-center overflow-hidden bg-white"
       style={{
         transition: "opacity 600ms cubic-bezier(0.4,0,0.2,1)",
         opacity: fadeOut ? 0 : 1,
         pointerEvents: fadeOut ? "none" : "all",
       }}
     >
-      {/* ── Background grid ── */}
+      {/* ── Background dot pattern ── */}
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(220,38,38,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(220,38,38,0.04) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+            "radial-gradient(rgba(220,38,38,0.06) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
           animation: "loader-grid-in 0.8s ease forwards",
         }}
       />
 
       {/* ── Ambient glow ── */}
       <div
-        className="pointer-events-none absolute top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-900/20 blur-[100px]"
+        className="pointer-events-none absolute top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-100/60 blur-[120px]"
         style={{ animation: "loader-glow-pulse 2s ease infinite" }}
       />
 
       {/* ── Top progress bar ── */}
-      <div className="absolute top-0 left-0 h-0.5 w-full overflow-hidden bg-white/5">
+      <div className="absolute top-0 left-0 h-0.5 w-full overflow-hidden bg-red-50">
         <div
-          className="h-full bg-linear-to-r from-transparent via-red-500 to-transparent"
+          className="h-full bg-gradient-to-r from-transparent via-red-500 to-transparent"
           style={{ animation: "loader-bar 2.2s ease-in-out forwards" }}
         />
       </div>
-
-      {/* ── Corner decorators ── */}
-      {[
-        "top-6 left-6 border-t border-l",
-        "top-6 right-6 border-t border-r",
-        "bottom-6 left-6 border-b border-l",
-        "bottom-6 right-6 border-b border-r",
-      ].map((cls, i) => (
-        <div
-          key={i}
-          className={`pointer-events-none absolute h-8 w-8 border-red-700/40 ${cls}`}
-          style={{ animation: `loader-corner-in 0.5s ease ${i * 0.08}s both` }}
-        />
-      ))}
 
       {/* ── Main content ── */}
       <div
@@ -84,10 +70,10 @@ export default function PageLoader() {
             }}
           />
           {/* Inner mask */}
-          <div className="absolute -inset-1 rounded-full bg-[#0a0a0a]" />
+          <div className="absolute -inset-1 rounded-full bg-white" />
 
           {/* Photo */}
-          <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-red-800/50">
+          <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-red-200 shadow-lg shadow-red-100/50">
             <Image
               src="/photo.png"
               alt="Yakub Firman Mustofa"
@@ -97,7 +83,7 @@ export default function PageLoader() {
             />
             {/* Scan line */}
             <div
-              className="pointer-events-none absolute inset-x-0 h-6 bg-linear-to-b from-transparent via-red-500/10 to-transparent"
+              className="pointer-events-none absolute inset-x-0 h-6 bg-gradient-to-b from-transparent via-red-500/10 to-transparent"
               style={{ animation: "loader-scan 1.6s ease-in-out 0.4s infinite" }}
             />
           </div>
@@ -112,13 +98,13 @@ export default function PageLoader() {
         {/* Name */}
         <div className="text-center">
           <h1
-            className="text-xl font-bold tracking-[0.18em] text-white uppercase"
+            className="text-xl font-black tracking-[0.18em] text-slate-900 uppercase"
             style={{ animation: "loader-text-in 0.5s ease 0.4s both" }}
           >
-            Yakub <span className="text-red-500">Firman</span> Mustofa
+            Yakub <span className="gradient-text">Firman</span> Mustofa
           </h1>
           <p
-            className="mt-1 text-[10px] tracking-[0.3em] text-red-500/80 uppercase"
+            className="mt-1.5 text-[10px] tracking-[0.3em] text-red-500/70 uppercase"
             style={{ animation: "loader-text-in 0.5s ease 0.55s both" }}
           >
             Full Stack Developer & SEO Specialist
@@ -127,11 +113,11 @@ export default function PageLoader() {
 
         {/* Loading bar */}
         <div
-          className="h-px w-40 overflow-hidden rounded-full bg-white/10"
+          className="h-px w-40 overflow-hidden rounded-full bg-red-100"
           style={{ animation: "loader-text-in 0.5s ease 0.65s both" }}
         >
           <div
-            className="h-full rounded-full bg-linear-to-r from-red-700 to-red-500"
+            className="h-full rounded-full bg-gradient-to-r from-red-600 to-red-500"
             style={{ animation: "loader-fill 1.8s cubic-bezier(0.4,0,0.2,1) 0.3s forwards" }}
           />
         </div>
@@ -145,11 +131,11 @@ export default function PageLoader() {
         }
         @keyframes loader-grid-in {
           from { opacity: 0; }
-          to   { opacity: 1; }
+          to   { opacity: 0.3; }
         }
         @keyframes loader-glow-pulse {
-          0%, 100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
-          50%       { opacity: 1;   transform: translate(-50%,-50%) scale(1.15); }
+          0%, 100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
+          50%       { opacity: 0.8; transform: translate(-50%,-50%) scale(1.1); }
         }
         @keyframes loader-ring-spin {
           from { transform: rotate(0deg); }
@@ -172,10 +158,6 @@ export default function PageLoader() {
         @keyframes loader-fill {
           from { width: 0%; }
           to   { width: 100%; }
-        }
-        @keyframes loader-corner-in {
-          from { opacity: 0; transform: scale(0.5); }
-          to   { opacity: 1; transform: scale(1); }
         }
       `}</style>
     </div>

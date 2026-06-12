@@ -8,7 +8,7 @@ import type { SpeakingEvent } from "@/lib/data";
 type Props = { initialData?: SpeakingEvent };
 
 const inputCls =
-  "w-full bg-[#0a0a0a] border border-white/8 rounded px-3 py-2.5 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 focus:bg-[#0d0d0d] transition-all";
+  "w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 focus:bg-gray-100 transition-all";
 const labelCls = "block text-[11px] font-medium text-gray-500 mb-1.5 tracking-wide uppercase";
 
 export default function SpeakingForm({ initialData }: Props) {
@@ -59,7 +59,7 @@ export default function SpeakingForm({ initialData }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className="space-y-5 rounded border border-white/5 bg-[#0d0d0d] p-4 sm:p-6">
+      <div className="space-y-5 rounded border border-gray-100 bg-gray-100 p-4 sm:p-6">
         <div>
           <label className={labelCls}>Judul Talk *</label>
           <input
@@ -135,7 +135,7 @@ export default function SpeakingForm({ initialData }: Props) {
           />
         </div>
         {error && (
-          <div className="flex items-center gap-2 rounded border border-red-900/30 bg-red-950/20 px-3 py-2">
+          <div className="flex items-center gap-2 rounded border border-red-200 bg-red-500/10 px-3 py-2">
             <svg
               className="h-3.5 w-3.5 shrink-0 text-red-500"
               fill="currentColor"
@@ -147,7 +147,7 @@ export default function SpeakingForm({ initialData }: Props) {
                 clipRule="evenodd"
               />
             </svg>
-            <p className="text-xs text-red-400">{error}</p>
+            <p className="text-xs text-red-700">{error}</p>
           </div>
         )}
       </div>
@@ -155,7 +155,7 @@ export default function SpeakingForm({ initialData }: Props) {
         <button
           type="submit"
           disabled={pending}
-          className="flex items-center gap-2 rounded bg-red-900 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-red-950/30 transition-all hover:bg-red-800 disabled:opacity-50"
+          className="flex items-center gap-2 rounded bg-red-600 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-red-500/30 transition-all hover:bg-red-800 disabled:opacity-50"
         >
           {pending ? (
             <svg className="h-3.5 w-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -188,7 +188,7 @@ export default function SpeakingForm({ initialData }: Props) {
         <button
           type="button"
           onClick={() => router.back()}
-          className="flex items-center gap-1.5 rounded border border-white/10 px-4 py-2.5 text-sm text-gray-500 transition-colors hover:border-white/20 hover:text-white"
+          className="flex items-center gap-1.5 rounded border border-gray-200 px-4 py-2.5 text-sm text-gray-500 transition-colors hover:border-gray-300 hover:text-gray-900"
         >
           <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path

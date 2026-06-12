@@ -36,10 +36,10 @@ export default function TestimonialFormClient() {
       fd.append("file", file);
       fd.append("upload_preset", preset || "");
 
-      const res = await fetch(
-        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-        { method: "POST", body: fd }
-      );
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        method: "POST",
+        body: fd,
+      });
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.error?.message || "Upload gagal");
@@ -83,12 +83,12 @@ export default function TestimonialFormClient() {
   }
 
   const inputCls =
-    "w-full bg-[#0a0a0a] border border-white/8 rounded px-3 py-2.5 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 focus:bg-[#0d0d0d] transition-all";
-  const labelCls = "block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide";
+    "w-full rounded-xl border border-red-100/60 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-red-300 focus:outline-none focus:ring-4 focus:ring-red-500/10 transition-all duration-200";
+  const labelCls = "mb-2 block text-[11px] font-bold tracking-widest text-slate-500 uppercase";
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto max-w-2xl space-y-4">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div>
           <label className={labelCls}>Nama Lengkap *</label>
           <input
@@ -115,7 +115,7 @@ export default function TestimonialFormClient() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div>
           <label className={labelCls}>Perusahaan / Organisasi</label>
           <input
@@ -134,13 +134,17 @@ export default function TestimonialFormClient() {
             accept="image/*"
             onChange={handleImageUpload}
             disabled={uploading}
-            className={inputCls + " cursor-pointer file:cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-red-800 file:text-white hover:file:bg-red-700"}
+            className={`${inputCls} cursor-pointer p-2.5 file:mr-4 file:cursor-pointer file:rounded-lg file:border-0 file:bg-red-50 file:px-4 file:py-1.5 file:text-xs file:font-semibold file:text-red-600 hover:file:bg-red-100`}
           />
-          {uploading && <p className="text-xs text-gray-400 mt-1">⏳ Uploading...</p>}
+          {uploading && <p className="mt-1.5 text-xs text-slate-500">⏳ Uploading...</p>}
           {formData.image && (
-            <div className="mt-2 flex items-center gap-2">
-              <img src={formData.image} alt="Preview" className="h-10 w-10 rounded object-cover" />
-              <p className="text-xs text-green-400">✓ Foto uploaded</p>
+            <div className="mt-3 flex items-center gap-3 rounded-xl border border-emerald-100/60 bg-emerald-50/30 p-2">
+              <img
+                src={formData.image}
+                alt="Preview"
+                className="h-10 w-10 shrink-0 rounded-lg object-cover ring-1 ring-emerald-100"
+              />
+              <p className="text-xs font-medium text-emerald-600">✓ Foto berhasil diunggah</p>
             </div>
           )}
         </div>
@@ -153,30 +157,35 @@ export default function TestimonialFormClient() {
           value={formData.message}
           onChange={handleChange}
           placeholder="Bagikan pengalaman Anda bekerja dengan saya..."
-          rows={6}
-          className={inputCls + " resize-y"}
+          rows={5}
+          className={`${inputCls} resize-y`}
           required
         />
       </div>
 
-      {error && <div className="rounded bg-red-900/20 p-3 text-sm text-red-400 border border-red-900/30">{error}</div>}
+      {error && (
+        <div className="rounded-xl border border-red-200/80 bg-red-50/50 p-4 text-sm text-red-600">
+          <p className="font-semibold">Terjadi Kesalahan</p>
+          <p className="mt-1 text-xs opacity-90">{error}</p>
+        </div>
+      )}
+      
       {success && (
-        <div className="rounded bg-green-900/20 p-3 text-sm text-green-400 border border-green-900/30">
-          ✓ Testimoni berhasil dikirim! Terima kasih. Testimoni Anda akan ditampilkan setelah disetujui.
+        <div className="rounded-xl border border-emerald-200/80 bg-emerald-50/50 p-4 text-sm text-emerald-600">
+          <p className="font-semibold">✓ Testimoni Berhasil Dikirim!</p>
+          <p className="mt-1 text-xs opacity-90">
+            Terima kasih. Testimoni Anda akan ditampilkan setelah disetujui.
+          </p>
         </div>
       )}
 
       <button
         type="submit"
         disabled={pending || uploading}
-        className="w-full rounded bg-gradient-to-r from-red-800 to-red-900 px-4 py-3 font-semibold text-white hover:from-red-700 hover:to-red-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        className="group w-full inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-700 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-red-500/20 transition-all hover:shadow-xl hover:shadow-red-500/30 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/70 disabled:pointer-events-none disabled:opacity-50"
       >
         {pending ? "Mengirim..." : uploading ? "Upload foto..." : "Kirim Testimoni"}
       </button>
-
-      <p className="text-center text-xs text-gray-600">
-        Testimoni Anda akan ditampilkan setelah disetujui oleh admin.
-      </p>
     </form>
   );
 }

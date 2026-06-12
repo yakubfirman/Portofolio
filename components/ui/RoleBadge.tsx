@@ -13,13 +13,13 @@ export default function RoleBadge({ role, size = "sm" }: RoleBadgeProps) {
       <FontAwesomeIcon
         icon={faBriefcase}
         aria-hidden="true"
-        className={size === "md" ? "h-3.5 w-3.5 text-red-500" : "h-2.5 w-2.5 text-red-700"}
+        className={size === "md" ? "h-3.5 w-3.5 text-red-500" : "h-2.5 w-2.5 text-red-500"}
       />
       <span
         className={
           size === "md"
-            ? "text-xs font-semibold tracking-widest text-red-500 uppercase"
-            : "text-[10px] font-semibold tracking-wider text-red-700/80 uppercase"
+            ? "text-xs font-bold tracking-widest text-red-600 uppercase"
+            : "text-[10px] font-bold tracking-wider text-red-600/80 uppercase"
         }
       >
         {role}

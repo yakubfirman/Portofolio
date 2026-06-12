@@ -32,19 +32,19 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0a0a] px-5">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-5">
       {/* Ambient glow */}
       <div className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-red-800/10 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 bottom-0 h-64 w-64 rounded-full bg-red-900/5 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 bottom-0 h-64 w-64 rounded-full bg-red-600/5 blur-3xl" />
 
       <div className="relative w-full max-w-sm">
         {/* Top accent line */}
         <div className="mb-8 h-px w-full bg-linear-to-r from-transparent via-red-700/50 to-transparent" />
 
         {/* Card */}
-        <div className="rounded-sm border border-white/5 bg-[#0d0d0d] p-8 shadow-2xl shadow-black/50">
+        <div className="rounded-sm border border-gray-100 bg-gray-100 p-8 shadow-2xl shadow-gray-200">
           <div className="mb-8">
-            <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-sm border border-red-900/30 bg-red-950/50">
+            <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-sm border border-red-200 bg-red-50">
               <svg
                 className="h-5 w-5 text-red-500"
                 fill="none"
@@ -62,7 +62,7 @@ export default function LoginPage() {
             <span className="block text-[10px] font-bold tracking-widest text-red-500/80 uppercase">
               Portfolio CMS
             </span>
-            <h1 className="mt-1 text-2xl font-bold text-white">Admin Login</h1>
+            <h1 className="mt-1 text-2xl font-bold text-gray-900">Admin Login</h1>
             <p className="mt-1 text-xs text-gray-600">Masuk untuk mengelola konten portfolio</p>
           </div>
 
@@ -76,11 +76,11 @@ export default function LoginPage() {
                 placeholder="••••••••"
                 autoFocus
                 required
-                className="w-full rounded border border-white/10 bg-[#111] px-4 py-3 text-sm text-white placeholder-gray-700 transition-colors focus:border-red-800/70 focus:outline-none"
+                className="w-full rounded border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-700 transition-colors focus:border-red-800/70 focus:outline-none"
               />
             </div>
             {error && (
-              <div className="flex items-center gap-2 rounded border border-red-900/30 bg-red-950/20 px-3 py-2">
+              <div className="flex items-center gap-2 rounded border border-red-200 bg-red-500/10 px-3 py-2">
                 <svg
                   className="h-3.5 w-3.5 shrink-0 text-red-500"
                   fill="currentColor"
@@ -92,13 +92,13 @@ export default function LoginPage() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <p className="text-xs text-red-400">{error}</p>
+                <p className="text-xs text-red-700">{error}</p>
               </div>
             )}
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded bg-red-900 py-3 text-sm font-medium text-white shadow-lg shadow-red-950/30 transition-all hover:bg-red-800 hover:shadow-red-950/50 disabled:opacity-50"
+              className="w-full rounded bg-red-600 py-3 text-sm font-medium text-white shadow-lg shadow-red-500/30 transition-all hover:bg-red-800 hover:shadow-red-500/20 disabled:opacity-50"
             >
               {loading ? "Memverifikasi..." : "Masuk"}
             </button>

@@ -8,7 +8,7 @@ export type SkillCategory = {
   skills: { name: string; pct: number }[];
 };
 
-const API_URL = process.env.API_URL || "https://yakubfirman.pythonanywhere.com";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://yakubfirman.pythonanywhere.com";
 
 export async function getSkillCategories(): Promise<SkillCategory[]> {
   try {

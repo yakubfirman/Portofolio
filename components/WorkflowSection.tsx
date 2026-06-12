@@ -55,7 +55,7 @@ export default function WorkflowSection() {
         </Reveal>
 
         <Reveal delay={60}>
-          <p className="-mt-6 mb-14 max-w-xl text-sm leading-relaxed text-gray-500">
+          <p className="-mt-8 mb-14 max-w-xl text-sm leading-relaxed text-slate-500">
             Setiap proyek dijalani dengan alur kerja yang terstruktur — dari pemahaman kebutuhan
             hingga peluncuran — sehingga hasilnya dapat diprediksi dan tepat sasaran.
           </p>
@@ -64,38 +64,38 @@ export default function WorkflowSection() {
         {/* Steps — horizontal grid */}
         <div className="relative">
           {/* Horizontal connector line (desktop) */}
-          <div className="pointer-events-none absolute top-9 left-0 hidden h-px w-full bg-linear-to-r from-transparent via-red-800/30 to-transparent lg:block" />
+          <div className="pointer-events-none absolute top-10 left-0 hidden h-px w-full bg-gradient-to-r from-transparent via-red-200/60 to-transparent lg:block" />
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
             {STEPS.map((step, i) => (
               <Reveal key={step.number} delay={i * 80}>
-                <div className="group relative flex h-full flex-col items-center rounded-xs border border-red-900/15 bg-[#0d0404]/60 p-5 text-center transition-all duration-300 hover:border-red-800/35 hover:bg-[#0f0505]/80 hover:shadow-lg hover:shadow-red-950/20">
+                <div className="group relative flex h-full flex-col items-center rounded-2xl border border-red-100/60 bg-white/70 p-5 text-center backdrop-blur-sm transition-all duration-300 hover:border-red-200 hover:bg-white hover:shadow-xl hover:shadow-red-50/50">
                   {/* Step icon */}
                   <div className="relative mb-4 shrink-0">
-                    <div className="absolute inset-0 rounded-xs bg-red-700/20 blur-md transition-all duration-300 group-hover:bg-red-600/30 group-hover:blur-lg" />
-                    <div className="relative flex h-13 w-13 items-center justify-center rounded-xs border border-red-800/40 bg-red-950/60 transition-all duration-300 group-hover:border-red-700/60">
+                    <div className="absolute inset-0 rounded-xl bg-red-100/30 blur-md transition-all duration-300 group-hover:bg-red-200/40 group-hover:blur-lg" />
+                    <div className="relative flex h-13 w-13 items-center justify-center rounded-xl bg-gradient-to-br from-red-50 to-rose-50 ring-1 ring-red-100/80 transition-all duration-300 group-hover:ring-red-200">
                       <FontAwesomeIcon
                         icon={step.icon}
-                        className="h-5 w-5 text-red-400 transition-colors duration-300 group-hover:text-red-300"
+                        className="h-5 w-5 text-red-500 transition-colors duration-300 group-hover:text-red-600"
                       />
                     </div>
                   </div>
 
                   {/* Number */}
-                  <span className="mb-1.5 font-mono text-[10px] font-semibold tracking-widest text-red-700/60">
+                  <span className="mb-1.5 font-mono text-[10px] font-bold tracking-widest text-red-400/70">
                     {step.number}
                   </span>
 
                   {/* Title */}
-                  <h3 className="mb-2 text-[13px] leading-snug font-bold text-white">
+                  <h3 className="mb-2 text-[13px] leading-snug font-bold text-slate-900">
                     {step.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-[12px] leading-relaxed text-gray-600">{step.description}</p>
+                  <p className="text-[12px] leading-relaxed text-slate-500">{step.description}</p>
 
                   {/* Bottom accent */}
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 rounded-xs bg-linear-to-r from-transparent via-red-600/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-gradient-to-r from-transparent via-red-400/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
               </Reveal>
             ))}

@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --accent: #dc2626;
+  --accent-dark: #991b1b;
+  --accent-light: #fef2f2;
+  --accent-glow: rgba(220, 38, 38, 0.15);
 }
 
 @theme inline {
@@ -23,28 +27,28 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Custom scrollbar */
+/* ── Custom scrollbar ── */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #fafafa;
 }
 ::-webkit-scrollbar-thumb {
-  background: #7f1d1d;
-  border-radius: 0;
+  background: linear-gradient(180deg, #dc2626, #991b1b);
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #991b1b;
+  background: linear-gradient(180deg, #ef4444, #b91c1c);
 }
 
-/* Text selection */
+/* ── Text selection ── */
 ::selection {
-  background: rgba(185, 28, 28, 0.35);
-  color: #fff;
+  background: rgba(220, 38, 38, 0.2);
+  color: #1e293b;
 }
 
-/* Infinite skills marquee — three rows, varying directions/speeds */
+/* ── Infinite skills marquee ── */
 @keyframes marquee-to-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -54,13 +58,13 @@ body {
   to   { transform: translateX(0); }
 }
 .skills-marquee-left {
-  animation: marquee-to-left 30s linear infinite;
+  animation: marquee-to-left 35s linear infinite;
 }
 .skills-marquee-right {
-  animation: marquee-to-right 24s linear infinite;
+  animation: marquee-to-right 28s linear infinite;
 }
 .skills-marquee-left-slow {
-  animation: marquee-to-left 38s linear infinite;
+  animation: marquee-to-left 42s linear infinite;
 }
 .skills-marquee-left:hover,
 .skills-marquee-right:hover,
@@ -68,7 +72,7 @@ body {
   animation-play-state: paused;
 }
 
-/* Availability dot ping animation */
+/* ── Availability dot pulse ── */
 @keyframes ping-slow {
   75%,
   100% {
@@ -80,36 +84,31 @@ body {
   animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-/* Subtle shimmer on gradient text */
+/* ── Shimmer text ── */
 @keyframes shimmer-text {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.15);
-  }
+  0%, 100% { filter: brightness(1); }
+  50%      { filter: brightness(1.12); }
 }
 .shimmer-text {
   animation: shimmer-text 4s ease-in-out infinite;
 }
 
-/* Fade-in-up utility */
+/* ── Fade-in-up utility ── */
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 .fade-in-up {
-  animation: fade-in-up 0.5s ease forwards;
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Navbar entrance */
+/* ── Navbar entrance ── */
 @keyframes navbar-enter {
   from {
     opacity: 0;
@@ -124,71 +123,98 @@ body {
   animation: navbar-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Hire Me button pulse glow */
+/* ── Button pulse glow ── */
 @keyframes btn-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.5);
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
   }
   60% {
-    box-shadow: 0 0 0 7px rgba(185, 28, 28, 0);
+    box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
   }
 }
 .btn-pulse {
   animation: btn-pulse 2.4s ease-in-out infinite;
 }
+
+/* ── Cursor blink ── */
 @keyframes cursor-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
 }
 .cursor-blink {
   animation: cursor-blink 1s step-end infinite;
 }
 
-/* Hero page-enter animation (CSS-only, no JS needed above fold) */
+/* ── Hero page-enter ── */
 @keyframes hero-fade-up {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(20px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 .hero-animate {
   opacity: 0;
-  animation: hero-fade-up 0.65s ease forwards;
+  animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.hero-delay-1 {
-  animation-delay: 100ms;
+.hero-delay-1 { animation-delay: 100ms; }
+.hero-delay-2 { animation-delay: 250ms; }
+.hero-delay-3 { animation-delay: 400ms; }
+.hero-delay-4 { animation-delay: 550ms; }
+.hero-delay-5 { animation-delay: 700ms; }
+
+/* ── Float animation ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
 }
-.hero-delay-2 {
-  animation-delay: 250ms;
-}
-.hero-delay-3 {
-  animation-delay: 400ms;
-}
-.hero-delay-4 {
-  animation-delay: 550ms;
-}
-.hero-delay-5 {
-  animation-delay: 700ms;
+.float {
+  animation: float 6s ease-in-out infinite;
 }
 
-/* ── Keyboard focus ring — visible only when navigating with keyboard ── */
+/* ── Glow pulse ── */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 0.7; transform: scale(1.05); }
+}
+.glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* ── Shimmer border ── */
+@keyframes shimmer-border {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Gradient text utility ── */
+.gradient-text {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section divider ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.15), transparent);
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+/* ── Keyboard focus ring ── */
 :focus-visible {
-  outline: 2px solid rgba(239, 68, 68, 0.65);
+  outline: 2px solid rgba(220, 38, 38, 0.5);
   outline-offset: 3px;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
-/* ── Respect reduced-motion OS preference (WCAG 2.3.3) ── */
+/* ── Respect reduced-motion ── */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -200,7 +226,6 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  /* Hero CSS animations: instantly show instead of animate */
   .hero-animate {
     opacity: 1 !important;
     transform: none !important;

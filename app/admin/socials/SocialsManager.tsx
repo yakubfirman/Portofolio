@@ -7,7 +7,7 @@ import { createSocial, updateSocial, deleteSocial } from "@/app/admin/actions";
 type Social = { id: number; label: string; href: string; icon_key: string };
 
 const inputCls =
-  "w-full bg-[#0a0a0a] border border-white/8 rounded px-3 py-2 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all";
+  "w-full bg-white border border-gray-200 rounded px-3 py-2 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all";
 
 const ICON_OPTIONS = [
   "faGithub",
@@ -62,7 +62,7 @@ function SocialRow({
 
   if (editing) {
     return (
-      <div className="rounded border border-white/8 bg-[#0d0d0d] p-4">
+      <div className="rounded border border-gray-200 bg-gray-100 p-4">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <div>
             <p className="mb-1 text-[10px] text-gray-600 uppercase">Label</p>
@@ -86,18 +86,18 @@ function SocialRow({
             </select>
           </div>
         </div>
-        {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
+        {error && <p className="mt-2 text-xs text-red-700">{error}</p>}
         <div className="mt-3 flex gap-2">
           <button
             onClick={handleSave}
             disabled={pending}
-            className="rounded bg-red-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-800 disabled:opacity-50"
+            className="rounded bg-gradient-to-r from-red-600 to-red-700 px-3 text-white py-1.5 text-xs font-medium text-gray-900 hover:bg-red-800 disabled:opacity-50"
           >
             {pending ? "Menyimpan..." : "Simpan"}
           </button>
           <button
             onClick={() => setEditing(false)}
-            className="rounded border border-white/8 px-3 py-1.5 text-xs text-gray-500 hover:text-white"
+            className="rounded border border-gray-200 px-3 py-1.5 text-xs text-gray-500 hover:text-gray-900"
           >
             Batal
           </button>
@@ -107,23 +107,23 @@ function SocialRow({
   }
 
   return (
-    <div className="flex items-center justify-between rounded border border-white/5 bg-[#0d0d0d] px-4 py-3">
+    <div className="flex items-center justify-between rounded border border-gray-100 bg-gray-100 px-4 py-3">
       <div className="flex flex-col gap-0.5">
-        <p className="text-sm font-medium text-white">{social.label}</p>
+        <p className="text-sm font-medium text-gray-900">{social.label}</p>
         <p className="max-w-xs truncate text-xs text-gray-600">{social.href}</p>
         <p className="text-[10px] text-gray-700">{social.icon_key}</p>
       </div>
       <div className="flex gap-2">
         <button
           onClick={() => setEditing(true)}
-          className="rounded border border-white/8 px-3 py-1.5 text-xs text-gray-500 transition-colors hover:border-red-900/40 hover:text-red-400"
+          className="rounded border border-gray-200 px-3 py-1.5 text-xs text-gray-500 transition-colors hover:border-red-900/40 hover:text-red-700"
         >
           Edit
         </button>
         <button
           onClick={handleDelete}
           disabled={pending}
-          className="rounded border border-white/8 px-3 py-1.5 text-xs text-gray-600 transition-colors hover:border-red-900/40 hover:text-red-500 disabled:opacity-50"
+          className="rounded border border-gray-200 px-3 py-1.5 text-xs text-gray-600 transition-colors hover:border-red-900/40 hover:text-red-500 disabled:opacity-50"
         >
           Hapus
         </button>
@@ -160,7 +160,7 @@ function AddSocialForm({ onAdded }: { onAdded: () => void }) {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 rounded bg-red-900 px-3 py-2 text-sm font-medium text-white shadow-lg shadow-red-950/30 transition-all hover:bg-red-800"
+        className="flex items-center gap-2 rounded bg-gradient-to-r from-red-600 to-red-700 px-3 text-white py-2 text-sm font-medium text-white shadow-lg shadow-red-500/30 transition-all hover:bg-red-800"
       >
         <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5v15m7.5-7.5h-15" />
@@ -171,8 +171,8 @@ function AddSocialForm({ onAdded }: { onAdded: () => void }) {
   }
 
   return (
-    <div className="rounded border border-red-900/30 bg-[#0d0d0d] p-4">
-      <p className="mb-3 text-xs font-semibold text-gray-400">Tambah Sosial Media Baru</p>
+    <div className="rounded border border-red-200 bg-gray-100 p-4">
+      <p className="mb-3 text-xs font-semibold text-gray-600">Tambah Sosial Media Baru</p>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <div>
           <p className="mb-1 text-[10px] text-gray-600 uppercase">Label *</p>
@@ -191,16 +191,16 @@ function AddSocialForm({ onAdded }: { onAdded: () => void }) {
           </select>
         </div>
       </div>
-      {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
+      {error && <p className="mt-2 text-xs text-red-700">{error}</p>}
       <div className="mt-3 flex gap-2">
         <button
           onClick={handleAdd}
           disabled={pending || !label || !href}
-          className="rounded bg-red-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-800 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="rounded bg-gradient-to-r from-red-600 to-red-700 px-3 text-white py-1.5 text-xs font-medium text-gray-900 hover:bg-red-800 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {pending ? "Menambah..." : "Tambah"}
         </button>
-        <button onClick={() => setOpen(false)} className="rounded border border-white/8 px-3 py-1.5 text-xs text-gray-500 hover:text-white">
+        <button onClick={() => setOpen(false)} className="rounded border border-gray-200 px-3 py-1.5 text-xs text-gray-500 hover:text-gray-900">
           Batal
         </button>
       </div>

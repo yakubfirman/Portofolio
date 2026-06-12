@@ -41,7 +41,7 @@ export default async function AdminTestimonialsPage() {
         <p className="mb-1 text-[10px] font-semibold tracking-widest text-red-500/70 uppercase">
           Admin
         </p>
-        <h1 className="text-xl font-bold text-white sm:text-2xl">Testimoni Klien</h1>
+        <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">Testimoni Klien</h1>
         <p className="mt-0.5 text-xs text-gray-600">
           {approved} disetujui, {pending} pending approval
         </p>

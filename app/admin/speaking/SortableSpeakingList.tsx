@@ -36,7 +36,7 @@ function SortableRow({ event }: { event: SpeakingEvent }) {
     <div
       ref={setNodeRef}
       style={style}
-      className="flex items-center gap-2 rounded border border-white/5 bg-[#0d0d0d] p-3 transition-colors hover:border-white/10 sm:gap-3 sm:p-4"
+      className="flex items-center gap-2 rounded border border-gray-100 bg-gray-100 p-3 transition-colors hover:border-gray-200 sm:gap-3 sm:p-4"
     >
       <button
         {...attributes}
@@ -54,7 +54,7 @@ function SortableRow({ event }: { event: SpeakingEvent }) {
         </svg>
       </button>
       <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-white">{event.title}</p>
+        <p className="truncate text-sm font-medium text-gray-900">{event.title}</p>
         <p className="mt-0.5 text-xs text-gray-600">
           <span className="text-gray-500">{event.event}</span>
           <span className="mx-1.5 text-gray-700">·</span>
@@ -64,7 +64,7 @@ function SortableRow({ event }: { event: SpeakingEvent }) {
       {/* Topics */}
       <div className="hidden shrink-0 items-center gap-1 sm:flex">
         {event.topics?.slice(0, 2).map((t) => (
-          <span key={t} className="rounded bg-white/5 px-1.5 py-0.5 text-[10px] text-gray-500">
+          <span key={t} className="rounded bg-black/5 px-1.5 py-0.5 text-[10px] text-gray-500">
             {t}
           </span>
         ))}
@@ -72,7 +72,7 @@ function SortableRow({ event }: { event: SpeakingEvent }) {
       <div className="flex shrink-0 items-center gap-2">
         <Link
           href={`/admin/speaking/${event.id}`}
-          className="flex items-center gap-1.5 rounded border border-white/10 px-2 py-1.5 text-xs text-gray-400 transition-colors hover:border-white/20 hover:text-white sm:px-3"
+          className="flex items-center gap-1.5 rounded border border-gray-200 px-2 py-1.5 text-xs text-gray-600 transition-colors hover:border-gray-300 hover:text-gray-900 sm:px-3"
         >
           <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path

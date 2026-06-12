@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -22,7 +22,7 @@ export default async function ProjectsPage() {
   const [projects, socials, profile] = await Promise.all([getProjects(), getSocials(), getProfile()]);
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a]">
+    <div className="relative min-h-screen bg-white">
       <PageBackground />
 
       <Navbar profile={profile} />
@@ -32,14 +32,14 @@ export default async function ProjectsPage() {
           {/* ── Page header ── */}
           <div className="hero-animate hero-delay-2">
             <SectionHeading tag="Portfolio" title="Semua Proyek" />
-            <p className="-mt-8 mb-12 max-w-xl text-sm leading-relaxed text-gray-500 sm:mb-16">
+            <p className="-mt-8 mb-12 max-w-xl text-sm leading-relaxed text-slate-500 sm:mb-16">
               Kumpulan proyek yang telah saya kerjakan — dari pengembangan aplikasi web, pembuatan
               website organisasi, hingga pengalaman magang di instansi pemerintah.
             </p>
           </div>
 
           {/* ── Projects grid ── */}
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-7 sm:grid-cols-2">
             {projects.map((project, index) => (
               <Reveal key={project.slug} delay={index * 80} className="h-full">
                 <ProjectCard project={project} />
@@ -54,7 +54,7 @@ export default async function ProjectsPage() {
                 href={socials.find((s) => s.label.toLowerCase() === "github")?.href ?? "https://github.com/yakubfirman"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 rounded-xs border border-red-900/30 bg-red-950/20 px-6 py-3 text-sm font-medium text-gray-400 transition-all hover:border-red-700/50 hover:bg-red-950/30 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/70"
+                className="group inline-flex items-center gap-2.5 rounded-xl border border-red-200/80 bg-white/60 px-6 py-3 text-sm font-semibold text-slate-600 backdrop-blur-sm transition-all duration-300 hover:border-red-300 hover:bg-red-50/60 hover:text-slate-900 hover:shadow-lg hover:shadow-red-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500/70"
               >
                 <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
                 Lihat Repository GitHub

@@ -60,7 +60,7 @@ const EDU_ICONS = ["faGraduationCap", "faSchool", "faUniversity"];
 // ── Shared styles ─────────────────────────────────────────────────────────
 
 const inp =
-  "w-full bg-[#0a0a0a] border border-white/8 rounded px-3 py-2 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all";
+  "w-full bg-white border border-gray-200 rounded px-3 py-2 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all";
 const lbl = "block text-[11px] font-medium text-gray-500 mb-1 tracking-wide uppercase";
 
 // ── Drag handle ───────────────────────────────────────────────────────────
@@ -89,8 +89,8 @@ function DragHandle(props: Record<string, unknown>) {
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="rounded border border-white/5 bg-[#0d0d0d] p-4 sm:p-5">
-      <p className="mb-3 text-sm font-semibold text-gray-300">{title}</p>
+    <div className="rounded border border-gray-100 bg-gray-100 p-4 sm:p-5">
+      <p className="mb-3 text-sm font-semibold text-gray-700">{title}</p>
       {children}
     </div>
   );
@@ -103,7 +103,7 @@ function AddBtn({ onClick, label }: { onClick: () => void; label: string }) {
     <button
       type="button"
       onClick={onClick}
-      className="mt-3 flex items-center gap-1.5 text-xs text-gray-600 hover:text-red-400 transition-colors"
+      className="mt-3 flex items-center gap-1.5 text-xs text-gray-600 hover:text-red-700 transition-colors"
     >
       <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5v15m7.5-7.5h-15" />
@@ -154,11 +154,11 @@ function MetaRow({
     <div
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition, opacity: isDragging ? 0.4 : 1 }}
-      className="flex items-center gap-2 rounded border border-white/5 bg-[#0a0a0a] px-2 py-2"
+      className="flex items-center gap-2 rounded border border-gray-100 bg-white px-2 py-2"
     >
       <DragHandle {...attributes} {...listeners} />
       <select
-        className="w-36 shrink-0 bg-[#0a0a0a] border border-white/8 rounded px-2 py-1.5 text-white text-xs focus:outline-none focus:border-red-800/60"
+        className="w-36 shrink-0 bg-white border border-gray-200 rounded px-2 py-1.5 text-gray-900 text-xs focus:outline-none focus:border-red-800/60"
         value={item.icon_key}
         onChange={(e) => onChange({ ...item, icon_key: e.target.value })}
       >
@@ -170,7 +170,7 @@ function MetaRow({
         )}
       </select>
       <input
-        className={`flex-1 bg-[#0a0a0a] border border-white/8 rounded px-3 py-2 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all`}
+        className={`flex-1 bg-white border border-gray-200 rounded px-3 py-2 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all`}
         value={item.text}
         onChange={(e) => onChange({ ...item, text: e.target.value })}
         placeholder="Surakarta, Jawa Tengah"
@@ -205,7 +205,7 @@ function EduCard({
     <div
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition, opacity: isDragging ? 0.4 : 1 }}
-      className="overflow-hidden rounded border border-white/5 bg-[#0a0a0a]"
+      className="overflow-hidden rounded border border-gray-100 bg-white"
     >
       <div className="flex items-center gap-2 px-3 py-2.5">
         <DragHandle {...attributes} {...listeners} />
@@ -226,7 +226,7 @@ function EduCard({
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          className="shrink-0 rounded px-2 py-1 text-xs text-gray-600 hover:text-gray-300 transition-colors"
+          className="shrink-0 rounded px-2 py-1 text-xs text-gray-600 hover:text-gray-700 transition-colors"
         >
           {open ? "↑" : "↓"}
         </button>
@@ -239,7 +239,7 @@ function EduCard({
         </button>
       </div>
       {open && (
-        <div className="grid grid-cols-1 gap-3 border-t border-white/5 p-3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 border-t border-gray-100 p-3 sm:grid-cols-2">
           <div>
             <label className={lbl}>Icon</label>
             <select
@@ -315,17 +315,17 @@ function HighlightRow({
     <div
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition, opacity: isDragging ? 0.4 : 1 }}
-      className="flex items-center gap-2 rounded border border-white/5 bg-[#0a0a0a] px-2 py-2"
+      className="flex items-center gap-2 rounded border border-gray-100 bg-white px-2 py-2"
     >
       <DragHandle {...attributes} {...listeners} />
       <input
-        className="w-24 shrink-0 bg-[#0a0a0a] border border-white/8 rounded px-2 py-1.5 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all"
+        className="w-24 shrink-0 bg-white border border-gray-200 rounded px-2 py-1.5 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all"
         value={item.value}
         onChange={(e) => onChange({ ...item, value: e.target.value })}
         placeholder="2+"
       />
       <input
-        className="flex-1 bg-[#0a0a0a] border border-white/8 rounded px-3 py-2 text-white text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all"
+        className="flex-1 bg-white border border-gray-200 rounded px-3 py-2 text-gray-900 text-sm placeholder-gray-700 focus:outline-none focus:border-red-800/60 transition-all"
         value={item.label}
         onChange={(e) => onChange({ ...item, label: e.target.value })}
         placeholder="Tahun Pengalaman"
@@ -501,7 +501,7 @@ export default function AboutForm({ initialData }: { initialData: AboutData }) {
       </Section>
 
       {error && (
-        <p className="rounded border border-red-900/40 bg-red-950/20 px-3 py-2 text-xs text-red-400">
+        <p className="rounded border border-red-900/40 bg-red-500/10 px-3 py-2 text-xs text-red-700">
           {error}
         </p>
       )}

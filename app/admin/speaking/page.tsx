@@ -24,12 +24,12 @@ export default async function AdminSpeakingPage() {
           <p className="mb-1 text-[10px] font-semibold tracking-widest text-red-500/70 uppercase">
             Admin
           </p>
-          <h1 className="text-xl font-bold text-white sm:text-2xl">Speaking</h1>
+          <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">Speaking</h1>
           <p className="mt-0.5 text-xs text-gray-600">{events.length} event terdaftar</p>
         </div>
         <Link
           href="/admin/speaking/new"
-          className="flex items-center gap-2 rounded bg-red-900 px-3 py-2 text-sm font-medium text-white shadow-lg shadow-red-950/30 transition-all hover:bg-red-800 sm:px-4"
+          className="flex items-center gap-2 rounded bg-gradient-to-r from-red-600 to-red-700 px-3 text-white py-2 text-sm font-medium text-white shadow-lg shadow-red-500/30 transition-all hover:bg-red-800 sm:px-4"
         >
           <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
